@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <img src="Logo.PNG" alt="taxipet logo" class="logo">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TaxiPet | Save Time, Call Your Pet a Ride</title>
@@ -9,6 +10,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   
   <style>
+    .logo {
+  position: fixed; /*  Keeps the logo in place even when scrolling  */
+  top: 10px; /*  Adjust as needed for vertical positioning  */
+  right: 10px; /*  Adjust as needed for horizontal positioning  */
+  width: 150px; /*  Adjust as needed for logo size  */
+  height: auto; /*  Maintain aspect ratio  */
+  z-index: 999; /*  Ensures the logo appears above other elements  */
+}
+
     .white-background-block {
       background-color: white;
       padding: 20px;
@@ -26,7 +36,7 @@
     }
 
     header img {
-      width: 850px;
+      width: 900px;
       height: auto;
     }
     h1 {
