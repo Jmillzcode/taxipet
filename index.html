@@ -18,7 +18,7 @@
   height: auto; /*  Maintain aspect ratio  */
   z-index: 999; /*  Ensures the logo appears above other elements  */
 }
-
+/* CSS style blocks */ 
     .white-background-block {
       background-color: white;
       padding: 20px;
@@ -112,6 +112,174 @@ We’re more than just a pet taxi—we also offer dog walking and pet sitting, g
     </ul>
   </section>
 </div>
+  <!-- TaxiPet Pricing + Calculator Section -->
+<div class="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl p-6 space-y-10">
+
+  <!-- Pricing Chart -->
+  <div>
+    <h2 class="text-3xl font-bold mb-6 text-center">📋 TaxiPet Rates</h2>
+
+    <!-- Base Fees -->
+    <div class="bg-yellow-100 p-4 rounded-xl mb-6 text-center">
+      <p class="text-lg font-semibold">🐾 Base Fee (Pickup): <span class="text-black">$20</span></p>
+      <p class="text-lg font-semibold">🐾 Minimum Fare: <span class="text-black">$30</span></p>
+    </div>
+
+    <!-- Mileage Rates -->
+    <h3 class="text-xl font-semibold mb-3">📏 Mileage Rates by Pet Size</h3>
+    <div class="overflow-x-auto">
+      <table class="w-full border border-gray-200 rounded-lg overflow-hidden">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="p-3 text-left">Distance</th>
+            <th class="p-3 text-center">Small<br><span class="text-sm">(under 20 lbs)</span></th>
+            <th class="p-3 text-center">Medium<br><span class="text-sm">(20–50 lbs)</span></th>
+            <th class="p-3 text-center">Large<br><span class="text-sm">(50–80 lbs)</span></th>
+            <th class="p-3 text-center">XL<br><span class="text-sm">(80+ lbs)</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-t">
+            <td class="p-3">0–5 miles</td>
+            <td class="p-3 text-center">$2.50/mi</td>
+            <td class="p-3 text-center">$3.00/mi</td>
+            <td class="p-3 text-center">$3.50/mi</td>
+            <td class="p-3 text-center">$4.00/mi</td>
+          </tr>
+          <tr class="border-t">
+            <td class="p-3">6–15 miles</td>
+            <td class="p-3 text-center">$2.25/mi</td>
+            <td class="p-3 text-center">$2.75/mi</td>
+            <td class="p-3 text-center">$3.25/mi</td>
+            <td class="p-3 text-center">$3.75/mi</td>
+          </tr>
+          <tr class="border-t">
+            <td class="p-3">16–30 miles</td>
+            <td class="p-3 text-center">$2.00/mi</td>
+            <td class="p-3 text-center">$2.50/mi</td>
+            <td class="p-3 text-center">$3.00/mi</td>
+            <td class="p-3 text-center">$3.50/mi</td>
+          </tr>
+          <tr class="border-t bg-gray-50 font-semibold">
+            <td class="p-3">31+ miles</td>
+            <td class="p-3 text-center" colspan="4">📞 Custom Quote Required</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Add-Ons -->
+    <h3 class="text-xl font-semibold mt-6 mb-3">➕ Add-Ons</h3>
+    <ul class="list-disc list-inside space-y-2">
+      <li>🐶 Extra Pet: +$10 each</li>
+      <li>🏥 Vet Visit Companion (wait + return): +$30</li>
+      <li>✂️ Grooming Pickup + Return: +$20</li>
+      <li>📦 Crate Provided: +$15</li>
+    </ul>
+  </div>
+
+  <!-- Fare Calculator -->
+  <div>
+    <h2 class="text-3xl font-bold mb-6 text-center">🐾 Fare Calculator</h2>
+
+    <!-- Pet Size -->
+    <label class="block mb-2 font-semibold">Pet Size</label>
+    <select id="size" class="w-full p-2 border rounded-lg mb-4">
+      <option value="small">Small (under 20 lbs)</option>
+      <option value="medium">Medium (20–50 lbs)</option>
+      <option value="large">Large (50–80 lbs)</option>
+      <option value="xl">XL (80+ lbs)</option>
+    </select>
+
+    <!-- Distance -->
+    <label class="block mb-2 font-semibold">Distance (round trip miles)</label>
+    <input type="number" id="miles" min="1" class="w-full p-2 border rounded-lg mb-4" placeholder="e.g. 8">
+
+    <!-- Pets -->
+    <label class="block mb-2 font-semibold">Number of Pets</label>
+    <input type="number" id="pets" min="1" value="1" class="w-full p-2 border rounded-lg mb-4">
+
+    <!-- Add-ons -->
+    <label class="block mb-2 font-semibold">Add-Ons</label>
+    <div class="space-y-2 mb-4">
+      <label class="flex items-center">
+        <input type="checkbox" id="vet" class="mr-2"> 🏥 Vet Visit Companion (+$30)
+      </label>
+      <label class="flex items-center">
+        <input type="checkbox" id="grooming" class="mr-2"> ✂️ Grooming Pickup (+$20)
+      </label>
+      <label class="flex items-center">
+        <input type="checkbox" id="crate" class="mr-2"> 📦 Crate Provided (+$15)
+      </label>
+    </div>
+
+    <!-- Button -->
+    <button onclick="calculateFare()" 
+      class="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-lg shadow-md transition">
+      Calculate Fare
+    </button>
+
+    <!-- Result -->
+    <div id="fareResult" class="text-xl font-bold text-center mt-6 text-green-600"></div>
+  </div>
+</div>
+
+<script>
+function calculateFare() {
+  let size = document.getElementById("size").value;
+  let miles = parseFloat(document.getElementById("miles").value);
+  let pets = parseInt(document.getElementById("pets").value);
+
+  if (isNaN(miles) || miles <= 0) {
+    document.getElementById("fareResult").innerText = "❌ Please enter a valid distance.";
+    return;
+  }
+
+  // Base fee
+  let fare = 20;
+
+  // Mileage rates by size
+  let rate = 0;
+  if (miles <= 5) {
+    if (size === "small") rate = 2.50;
+    if (size === "medium") rate = 3.00;
+    if (size === "large") rate = 3.50;
+    if (size === "xl") rate = 4.00;
+  } else if (miles <= 15) {
+    if (size === "small") rate = 2.25;
+    if (size === "medium") rate = 2.75;
+    if (size === "large") rate = 3.25;
+    if (size === "xl") rate = 3.75;
+  } else if (miles <= 30) {
+    if (size === "small") rate = 2.00;
+    if (size === "medium") rate = 2.50;
+    if (size === "large") rate = 3.00;
+    if (size === "xl") rate = 3.50;
+  } else {
+    document.getElementById("fareResult").innerText = "📞 Custom quote required for 31+ miles.";
+    return;
+  }
+
+  // Mileage charge
+  fare += miles * rate;
+
+  // Extra pets
+  if (pets > 1) {
+    fare += (pets - 1) * 10;
+  }
+
+  // Add-ons
+  if (document.getElementById("vet").checked) fare += 30;
+  if (document.getElementById("grooming").checked) fare += 20;
+  if (document.getElementById("crate").checked) fare += 15;
+
+  // Minimum fare check
+  if (fare < 30) fare = 30;
+
+  document.getElementById("fareResult").innerText = "💵 Estimated Fare: $" + fare.toFixed(2);
+}
+</script>
+
   <section id="book">
     <a href="https://www.petpocketbook.com/home/pricing" target="_blank">📅 Book Now</a>
   </section>
