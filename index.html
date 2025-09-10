@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <img src="Logo.PNG" alt="taxipet logo" class="logo">
+  <img src="Logo.PNG" alt="taxipet logo" class="floatinglogo">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TaxiPet | Save Time, Call Your Pet a Ride</title>
@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   
   <style>
-    .logo {
+    .floatinglogo {
   position: fixed; /*  Keeps the logo in place even when scrolling  */
   top: 10px; /*  Adjust as needed for vertical positioning  */
   left: 10px; /*  Adjust as needed for horizontal positioning  */
@@ -141,17 +141,17 @@ We’re more than just a pet taxi—we also offer dog walking and pet sitting, g
         <tbody>
           <tr class="border-t">
             <td class="p-3">0–5 miles</td>
-            <td class="p-3 text-center">$2.50/mi</td>
-            <td class="p-3 text-center">$3.00/mi</td>
             <td class="p-3 text-center">$3.50/mi</td>
             <td class="p-3 text-center">$4.00/mi</td>
+            <td class="p-3 text-center">$4.50/mi</td>
+            <td class="p-3 text-center">$5.00/mi</td>
           </tr>
           <tr class="border-t">
             <td class="p-3">6–15 miles</td>
-            <td class="p-3 text-center">$2.25/mi</td>
-            <td class="p-3 text-center">$2.75/mi</td>
+            <td class="p-3 text-center">$2.50/mi</td>
+            <td class="p-3 text-center">$3.00/mi</td>
             <td class="p-3 text-center">$3.25/mi</td>
-            <td class="p-3 text-center">$3.75/mi</td>
+            <td class="p-3 text-center">$4.00/mi</td>
           </tr>
           <tr class="border-t">
             <td class="p-3">16–30 miles</td>
@@ -180,7 +180,7 @@ We’re more than just a pet taxi—we also offer dog walking and pet sitting, g
 
   <!-- Fare Calculator -->
   <div>
-    <h2 class="text-3xl font-bold mb-6 text-center">🐾 Fare Calculator</h2>
+    <h2 class="text-3xl font-bold mb-6 text-center">🐾 Estimated Fare Calculator</h2>
 
     <!-- Pet Size -->
     <label class="block mb-2 font-semibold">Pet Size</label>
@@ -241,15 +241,15 @@ function calculateFare() {
   // Mileage rates by size
   let rate = 0;
   if (miles <= 5) {
+    if (size === "small") rate = 3.50;
+    if (size === "medium") rate = 4.00;
+    if (size === "large") rate = 4.50;
+    if (size === "xl") rate = 5.00;
+  } else if (miles <= 15) {
     if (size === "small") rate = 2.50;
     if (size === "medium") rate = 3.00;
-    if (size === "large") rate = 3.50;
-    if (size === "xl") rate = 4.00;
-  } else if (miles <= 15) {
-    if (size === "small") rate = 2.25;
-    if (size === "medium") rate = 2.75;
     if (size === "large") rate = 3.25;
-    if (size === "xl") rate = 3.75;
+    if (size === "xl") rate = 4.00;
   } else if (miles <= 30) {
     if (size === "small") rate = 2.00;
     if (size === "medium") rate = 2.50;
