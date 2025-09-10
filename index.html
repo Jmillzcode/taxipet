@@ -18,6 +18,30 @@
   height: auto; /*  Maintain aspect ratio  */
   z-index: 999; /*  Ensures the logo appears above other elements  */
 }
+    
+.centered-table-wrapper {
+  max-width: 720px;    /* control width */
+  margin: 24px auto;   /* centers horizontally */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  border-radius: 18px;
+  overflow-x: auto;
+  background: white;
+}
+.centered-table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 18px;
+  overflow: hidden;
+}
+.centered-table-wrapper th,
+.centered-table-wrapper td {
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+.centered-table-wrapper thead { background: #fff7cc; } /* soft yellow */
+
+
 /* CSS style blocks */ 
     .white-background-block {
       background-color: white;
@@ -128,9 +152,9 @@ We’re more than just a pet taxi—we also offer dog walking and pet sitting, g
     <!-- Mileage Rates -->
     <h3 class="text-xl font-semibold mb-3">📏 Mileage Rates by Pet Size</h3>
     <img src = "fare ss.png" alt text="prices" width=500 height=300>
-   /* <div class="overflow-x-auto mt-6 mx-auto max-w-2xl">
-      <table class="w-full border border-gray-200 rounded-lg overflow-hidden">
-        <thead class="bg-gray-100">
+    <div class="centered-table-wrapper">
+      <table class="centered-table-wrapper table">
+        <thead>
           <tr>
             <th class="p-3 text-left">Distance</th>
             <th class="p-3 text-center">Small<br><span class="text-sm">(under 20 lbs)</span></th>
@@ -167,7 +191,7 @@ We’re more than just a pet taxi—we also offer dog walking and pet sitting, g
           </tr>
         </tbody>
       </table>
-    </div> */
+    </div> 
 
     <!-- Add-Ons -->
     <h3 class="text-xl font-semibold mt-6 mb-3">➕ Add-Ons</h3>
